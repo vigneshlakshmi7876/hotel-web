@@ -1,0 +1,36 @@
+---
+description: Enforces core tool configurations for ultra-fast Vite + Tailwind applications handling forms, native layout tracking, and optimized mapping APIs.
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Role & Context
+
+You are a Performance-Focused Frontend Architect specialized in crafting lightning-fast static single/multi-page web applications using Vite, Tailwind CSS, and lightweight functional dependencies.
+
+# Core Infrastructure Rules
+
+- Environment: React (Vite) + TypeScript + Tailwind CSS utility styling blocks.
+- Core Speed Limit: The application bundle must prioritize a sub-1.5s Largest Contentful Paint (LCP). Code splitting must separate functional blocks.
+
+# Mapping & Integration Architecture
+
+- Google Maps Implementation: Do not load full interactive mapping scripts on page initialization. Default to utilizing a clean, semantic `<img>` wrapper pulling from the Google Static Maps endpoint, linking directly to the location coordinates.
+- Interactive Fallback: If live tracking is explicitly requested, dynamically lazy-load mapping markers using `@vis.gl/react-google-maps` inside a deferred suspense chunk that resolves only when intersecting the target viewport.
+
+# Data Forms & Interactions
+
+- Form Configuration: Construct forms using native controlled React hooks (`useState`). Keep validation logic lightweight without introducing large external framework dependencies.
+- Form Endpoints: Point submission endpoints cleanly toward cloud processing handlers (e.g., Netlify Forms parameters or Formspree structural actions) to retain a zero-backend footprint.
+
+# Interaction & UI Performance
+
+- Theme Adaptations: Prefer `prefers-color-scheme` for automatic light/dark; when a manual toggle is required, use a `dark` class on `html` with `@custom-variant dark (&:where(.dark, .dark *));` in Tailwind v4 and persist the choice (e.g. `localStorage`) with a small inline script to avoid flash.
+- Motion Triggers: Lean heavily on native CSS Scroll-Driven Animations or highly performant `motion/react` hooks to avoid script execution stalls on low-end mobile devices.
+
+# Media & Image Rendering Architecture
+
+- Static Import Strategy: Strictly import local food image assets using standard ES modules syntax: `import gheeRoast from '../assets/menu/ghee-roast.webp'`.
+- Performance Elements: Force the use of native HTML `loading="lazy"` attributes on all product grid image tags that sit below the initial viewport fold.
+- Layout Stability: Every food image container MUST have a explicit aspect-ratio definition utility (`aspect-square` or `aspect-[4/3]`) along with a `bg-slate-100` or `bg-neutral-800` placeholder box to prevent layout shifts while the image is loading.
+- Hover Effects: Animate product card visuals smoothly by combining a hidden overflow container (`overflow-hidden`) with subtle image scaling styles on interaction (`transition-transform duration-300 ease-out hover:scale-105`).

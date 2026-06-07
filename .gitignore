@@ -12,8 +12,10 @@ dist
 dist-ssr
 *.local
 
-# Cursor IDE (never commit)
-.cursor/
+# Cursor IDE — keep project rules, ignore other local Cursor data
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 
 # Editor directories and files
 .vscode/*
