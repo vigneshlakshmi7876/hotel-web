@@ -100,7 +100,7 @@ export function FeaturedGlassRow({
               <button
                 type="button"
                 onClick={() => scrollToSection('contact')}
-                className="inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-emerald-700 px-6 text-sm font-semibold text-white shadow-md transition hover:brightness-110"
+                className="inline-flex h-11 min-w-[8.5rem] items-center justify-center rounded-xl bg-red-600 px-6 text-sm font-semibold text-white shadow-md transition hover:bg-red-700"
               >
                 Order Now
               </button>
@@ -111,7 +111,7 @@ export function FeaturedGlassRow({
                   const id = 'contact' as SectionId
                   if (SECTION_IDS.includes(id)) scrollToSection(id)
                 }}
-                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-emerald-700 text-white shadow-md transition hover:brightness-110"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-600 text-white shadow-md transition hover:bg-red-700"
                 aria-label="Open contact to reserve"
               >
                 <svg

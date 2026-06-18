@@ -9,9 +9,16 @@
     <script>
       ;(function () {
         try {
-          var t = localStorage.getItem('hotel-theme')
-          if (t === 'dark') document.documentElement.classList.add('dark')
-          else if (t === 'light') document.documentElement.classList.remove('dark')
+          var scheme = localStorage.getItem('hotel-color-scheme')
+          if (scheme === 'scarlet-grand' || scheme === 'saffron-garden') {
+            document.documentElement.dataset.theme = scheme
+          } else {
+            document.documentElement.dataset.theme = 'scarlet-grand'
+          }
+          var mode =
+            localStorage.getItem('hotel-color-mode') || localStorage.getItem('hotel-theme')
+          if (mode === 'dark') document.documentElement.classList.add('dark')
+          else if (mode === 'light') document.documentElement.classList.remove('dark')
         } catch (e) {
           /* ignore */
         }

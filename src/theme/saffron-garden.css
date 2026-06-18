@@ -1,0 +1,334 @@
+/**
+ * Saffron Garden — remaps Scarlet Grand Tailwind red/emerald utilities
+ * when html[data-theme="saffron-garden"]. Scarlet Grand is unchanged (committed markup).
+ *
+ * Palette: moody charcoal brown + burnt saffron orange (reference mockup).
+ */
+
+/* ── Surfaces ── */
+html[data-theme='saffron-garden'] body {
+  color: #2c241c;
+  background-color: #f5efe6;
+}
+
+html[data-theme='saffron-garden'] #root {
+  background-color: #f5efe6;
+}
+
+html[data-theme='saffron-garden'].dark body {
+  color: #f5efe6;
+  background-color: #141110;
+}
+
+html[data-theme='saffron-garden'].dark #root {
+  background-color: #141110;
+}
+
+html[data-theme='saffron-garden'] .bg-neutral-50 {
+  background-color: #ebe3d6;
+}
+
+html[data-theme='saffron-garden'] .bg-neutral-100 {
+  background-color: #f0e8dc;
+}
+
+html[data-theme='saffron-garden'].dark .bg-neutral-50,
+html[data-theme='saffron-garden'].dark .bg-zinc-950 {
+  background-color: #1f1b18;
+}
+
+html[data-theme='saffron-garden'].dark .bg-black {
+  background-color: #141110;
+}
+
+html[data-theme='saffron-garden'] .dark\:bg-\[\#101012\]:is(.dark *) {
+  background-color: #1f1b18;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:bg-black\/35 {
+  background-color: rgb(20 17 16 / 0.88) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:bg-black\/45 {
+  background-color: rgb(20 17 16 / 0.92) !important;
+}
+
+/* ── Neutral text (warm tan on dark, brown on light) ── */
+html[data-theme='saffron-garden'] .text-neutral-900 {
+  color: #2c241c !important;
+}
+
+html[data-theme='saffron-garden'] .text-neutral-800 {
+  color: #3d342c !important;
+}
+
+html[data-theme='saffron-garden'] .text-neutral-700 {
+  color: #4a4038 !important;
+}
+
+html[data-theme='saffron-garden'] .text-neutral-600 {
+  color: #5c5046 !important;
+}
+
+html[data-theme='saffron-garden'] .text-neutral-500 {
+  color: #7a6e62 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-white {
+  color: #faf6f0 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-neutral-200 {
+  color: #e8dfd3 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-neutral-300 {
+  color: #d4c9bb !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-neutral-400 {
+  color: #b8aa98 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-neutral-500 {
+  color: #9a8b7a !important;
+}
+
+/* ── Text: red → burnt saffron ── */
+html[data-theme='saffron-garden'] .text-red-400 {
+  color: #eda045 !important;
+}
+
+html[data-theme='saffron-garden'] .text-red-500 {
+  color: #e8951e !important;
+}
+
+html[data-theme='saffron-garden'] .text-red-600 {
+  color: #d27a12 !important;
+}
+
+html[data-theme='saffron-garden'] .text-red-700 {
+  color: #b8650f !important;
+}
+
+html[data-theme='saffron-garden'] .hover\:text-red-600:hover {
+  color: #d27a12 !important;
+}
+
+html[data-theme='saffron-garden'] .hover\:text-red-700:hover {
+  color: #b8650f !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-red-400 {
+  color: #f5a623 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-red-500 {
+  color: #eda045 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:hover\:text-red-300:hover {
+  color: #f5b84d !important;
+}
+
+html[data-theme='saffron-garden'] .text-red-500\/90 {
+  color: rgb(232 149 30 / 0.9) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-red-400\/95 {
+  color: rgb(245 166 35 / 0.95) !important;
+}
+
+/* ── Text: emerald → warm gold (secondary accent) ── */
+html[data-theme='saffron-garden'] .text-emerald-200 {
+  color: #e8d4b0 !important;
+}
+
+html[data-theme='saffron-garden'] .text-emerald-300 {
+  color: #d4b896 !important;
+}
+
+html[data-theme='saffron-garden'] .text-emerald-400 {
+  color: #c9a66b !important;
+}
+
+html[data-theme='saffron-garden'] .text-emerald-600 {
+  color: #b8860b !important;
+}
+
+html[data-theme='saffron-garden'] .text-emerald-700 {
+  color: #9a7209 !important;
+}
+
+html[data-theme='saffron-garden'] .text-emerald-800 {
+  color: #7d5e08 !important;
+}
+
+html[data-theme='saffron-garden'] .text-emerald-900 {
+  color: #614a06 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:text-emerald-400 {
+  color: #d4a574 !important;
+}
+
+/* ── Backgrounds ── */
+html[data-theme='saffron-garden'] .bg-red-500 {
+  background-color: #e8951e !important;
+}
+
+html[data-theme='saffron-garden'] .bg-red-600 {
+  background-color: #d27a12 !important;
+}
+
+html[data-theme='saffron-garden'] .bg-red-500\/15 {
+  background-color: rgb(232 149 30 / 0.15) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:bg-red-500\/20 {
+  background-color: rgb(232 149 30 / 0.2) !important;
+}
+
+html[data-theme='saffron-garden'] .bg-emerald-50 {
+  background-color: #faf3e8 !important;
+}
+
+html[data-theme='saffron-garden'] .hover\:bg-red-50:hover {
+  background-color: #fdf5e8 !important;
+}
+
+html[data-theme='saffron-garden'] .hover\:bg-red-500\/10:hover {
+  background-color: rgb(232 149 30 / 0.1) !important;
+}
+
+html[data-theme='saffron-garden'] .hover\:bg-red-700:hover {
+  background-color: #b8650f !important;
+}
+
+/* ── Borders ── */
+html[data-theme='saffron-garden'] .border-red-500 {
+  border-color: #e8951e !important;
+}
+
+html[data-theme='saffron-garden'] .border-red-500\/25 {
+  border-color: rgb(232 149 30 / 0.25) !important;
+}
+
+html[data-theme='saffron-garden'] .border-red-500\/70 {
+  border-color: rgb(232 149 30 / 0.7) !important;
+}
+
+html[data-theme='saffron-garden'] .border-red-600 {
+  border-color: #d27a12 !important;
+}
+
+html[data-theme='saffron-garden'] .border-red-700 {
+  border-color: #b8650f !important;
+}
+
+html[data-theme='saffron-garden'] .border-emerald-500 {
+  border-color: #c9a66b !important;
+}
+
+html[data-theme='saffron-garden'] .border-emerald-600 {
+  border-color: #b8860b !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-red-400 {
+  border-color: #eda045 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-red-400\/20 {
+  border-color: rgb(237 160 69 / 0.2) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-red-400\/70 {
+  border-color: rgb(237 160 69 / 0.7) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-red-600 {
+  border-color: #d27a12 !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-emerald-600 {
+  border-color: #b8860b !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-neutral-700 {
+  border-color: #3d342c !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:border-neutral-800 {
+  border-color: #2a2420 !important;
+}
+
+/* ── Focus rings ── */
+html[data-theme='saffron-garden'] .focus\:border-red-500:focus {
+  border-color: #e8951e !important;
+}
+
+html[data-theme='saffron-garden'] .focus\:ring-red-500:focus {
+  --tw-ring-color: rgb(232 149 30 / 1) !important;
+}
+
+html[data-theme='saffron-garden'] .focus\:ring-red-500\/30:focus {
+  --tw-ring-color: rgb(232 149 30 / 0.3) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:focus\:border-emerald-500:focus {
+  border-color: #c9a66b !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:focus\:ring-emerald-500:focus {
+  --tw-ring-color: rgb(201 166 107 / 1) !important;
+}
+
+/* ── Shadows ── */
+html[data-theme='saffron-garden'] .shadow-red-600\/25 {
+  --tw-shadow-color: rgb(210 122 18 / 0.25) !important;
+}
+
+html[data-theme='saffron-garden'] .shadow-red-600\/30 {
+  --tw-shadow-color: rgb(210 122 18 / 0.3) !important;
+}
+
+html[data-theme='saffron-garden'].dark .dark\:shadow-red-900\/50 {
+  --tw-shadow-color: rgb(80 45 8 / 0.5) !important;
+}
+
+/* ── Gradients (saffron → warm gold) ── */
+html[data-theme='saffron-garden'] [class*='from-red-600'][class*='to-emerald-700'] {
+  background-image: linear-gradient(to right, #d27a12, #e8951e, #9a7209) !important;
+}
+
+html[data-theme='saffron-garden'] [class*='from-red-600'][class*='to-red-700']:not([class*='to-emerald']) {
+  background-image: linear-gradient(to right, #d27a12, #e8951e, #b8650f) !important;
+}
+
+html[data-theme='saffron-garden'] [class*='from-red-500'][class*='to-emerald-500'] {
+  background-image: linear-gradient(to right, #e8951e, #e8951e, #c9a66b) !important;
+}
+
+html[data-theme='saffron-garden'] [class*='from-red-600'][class*='to-emerald-600'] {
+  background-image: linear-gradient(to bottom right, #d27a12, #b8860b) !important;
+}
+
+html[data-theme='saffron-garden'] [class*='from-red-500'][class*='to-emerald-600'] {
+  background-image: linear-gradient(to bottom right, #e8951e, #b8860b) !important;
+}
+
+html[data-theme='saffron-garden'] [class*='from-red-400'][class*='to-emerald-500'] {
+  background-image: linear-gradient(to bottom right, rgb(237 160 69 / 0.45), rgb(201 166 107 / 0.35)) !important;
+}
+
+html[data-theme='saffron-garden'] [class*='from-red-600/10'][class*='to-emerald-600/10'] {
+  background-image: linear-gradient(to right, rgb(210 122 18 / 0.1), rgb(184 134 11 / 0.1)) !important;
+}
+
+html[data-theme='saffron-garden'].dark [class*='dark:from-red-500/15'][class*='dark:to-emerald-600/10'] {
+  background-image: linear-gradient(to right, rgb(232 149 30 / 0.15), rgb(184 134 11 / 0.1)) !important;
+}
+
+html[data-theme='saffron-garden'].dark [class*='dark:from-red-600'][class*='dark:to-emerald-700'] {
+  background-image: linear-gradient(to right, #d27a12, #e8951e, #9a7209) !important;
+}

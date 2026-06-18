@@ -18,14 +18,14 @@ function MoonIcon() {
 }
 
 export function ThemeToggle({ className = '' }: { className?: string }) {
-  const { theme, toggleTheme } = useTheme()
-  const isDark = theme === 'dark'
+  const { colorMode, toggleColorMode } = useTheme()
+  const isDark = colorMode === 'dark'
 
   return (
     <button
       type="button"
-      onClick={toggleTheme}
-      aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+      onClick={toggleColorMode}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Light mode' : 'Dark mode'}
       className={[
         'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-800 transition hover:border-neutral-400 dark:border-neutral-600 dark:bg-zinc-950 dark:text-neutral-200 dark:hover:border-neutral-500',

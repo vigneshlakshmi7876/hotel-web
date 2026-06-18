@@ -14,7 +14,7 @@ export default function LiveMapPanel({
   const position = { lat: RESTAURANT.lat, lng: RESTAURANT.lng }
 
   return (
-    <div className="h-72 w-full overflow-hidden rounded-lg border border-slate-200 dark:border-neutral-700">
+    <div className="h-[min(40vh,320px)] min-h-72 w-full overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800">
       <APIProvider apiKey={apiKey}>
         <Map
           className="h-full w-full"

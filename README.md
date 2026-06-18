@@ -21,7 +21,7 @@ Copy [`.env.example`](.env.example) to `.env` and set:
 
 | Variable | Purpose |
 |----------|---------|
-| `VITE_GOOGLE_MAPS_API_KEY` | Static map image + JS API (enable **Maps Static API** and **Maps JavaScript API** in Google Cloud). |
+| `VITE_GOOGLE_MAPS_API_KEY` | Interactive map in `#contact` (enable **Maps JavaScript API** in Google Cloud). |
 | `VITE_GOOGLE_MAP_ID` | Map ID for vector maps / `AdvancedMarker` (demo value `DEMO_MAP_ID` works for quick tests). |
 | `VITE_FORM_BACKEND` | `netlify` or `formspree` (leave empty to show configuration hints instead of posting). |
 | `VITE_FORMSPREE_FORM_ID` | Formspree form id when using `formspree`. |
@@ -33,8 +33,8 @@ Copy [`.env.example`](.env.example) to `.env` and set:
 
 ## Maps
 
-- The **Contact** page shows a static preview (`<img>` from the Static Maps API) linking to Google Maps.
-- **Live map** loads a separate JS chunk only after **Show live map** is clicked **and** the map block has entered the viewport (intersection + `React.lazy` / `Suspense`).
+- The **Contact** section shows an interactive Google Map when the block scrolls into view (lazy-loaded JS chunk via `React.lazy` / `Suspense`).
+- **Get directions** opens the venue in Google Maps in a new tab.
 
 ## Cursor rules
 
