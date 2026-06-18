@@ -21,7 +21,7 @@ Copy [`.env.example`](.env.example) to `.env` and set:
 
 | Variable | Purpose |
 |----------|---------|
-| `VITE_GOOGLE_MAPS_API_KEY` | Interactive map in `#contact` (enable **Maps JavaScript API** in Google Cloud). |
+| `VITE_GOOGLE_MAPS_API_KEY` | Optional — only if you add custom Maps JS features later. Contact map uses a Google embed iframe and works without it. |
 | `VITE_GOOGLE_MAP_ID` | Map ID for vector maps / `AdvancedMarker` (demo value `DEMO_MAP_ID` works for quick tests). |
 | `VITE_FORM_BACKEND` | `netlify` or `formspree` (leave empty to show configuration hints instead of posting). |
 | `VITE_FORMSPREE_FORM_ID` | Formspree form id when using `formspree`. |
@@ -33,8 +33,19 @@ Copy [`.env.example`](.env.example) to `.env` and set:
 
 ## Maps
 
-- The **Contact** section shows an interactive Google Map when the block scrolls into view (lazy-loaded JS chunk via `React.lazy` / `Suspense`).
+- The **Contact** section embeds Google Maps in an iframe (no API key required for hosting).
 - **Get directions** opens the venue in Google Maps in a new tab.
+
+## Netlify deploy
+
+[`netlify.toml`](netlify.toml) sets `npm run build`, publish `dist`, and SPA redirects.
+
+1. Connect the repo on [Netlify](https://app.netlify.com) (or push to the linked Git branch).
+2. **Site configuration → Environment variables** — set `VITE_FORM_BACKEND=netlify` for contact submissions (optional).
+3. Remove `VITE_GOOGLE_MAPS_API_KEY` if present — the contact map does not need it.
+4. Deploy. Check **Forms** in the Netlify dashboard for submissions named `contact`.
+
+Live example: [hotwebb.netlify.app](https://hotwebb.netlify.app/)
 
 ## Cursor rules
 

@@ -110,9 +110,6 @@ export function SectionScrollNav() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <span className="hidden text-sm font-medium text-red-500/90 dark:text-red-400/95 lg:inline">
-            Sign in / Register
-          </span>
           <ThemePicker className="dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15" />
           <ThemeToggle className="dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15" />
           <button
@@ -149,7 +146,6 @@ export function SectionScrollNav() {
                 {label}
               </a>
             ))}
-            <p className="mt-2 px-4 text-sm font-medium text-red-500 dark:text-red-400">Sign in / Register</p>
           </div>
         </div>
       ) : null}
