@@ -155,7 +155,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="order-1 overflow-hidden lg:order-2">
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               <div
                 className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full bg-red-500/15 blur-3xl dark:bg-red-500/20"

@@ -17,7 +17,10 @@ function MoonIcon() {
   )
 }
 
-export function ThemeToggle({ className = '' }: { className?: string }) {
+const headerBtnClass =
+  'border-neutral-300/80 bg-white/90 text-neutral-800 shadow-sm hover:border-neutral-400 hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15'
+
+export function ThemeToggle({ className = '', showLabel = false }: { className?: string; showLabel?: boolean }) {
   const { colorMode, toggleColorMode } = useTheme()
   const isDark = colorMode === 'dark'
 
@@ -28,11 +31,21 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Light mode' : 'Dark mode'}
       className={[
-        'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-800 transition hover:border-neutral-400 dark:border-neutral-600 dark:bg-zinc-950 dark:text-neutral-200 dark:hover:border-neutral-500',
+        showLabel
+          ? 'inline-flex h-11 w-full items-center justify-between gap-3 rounded-xl rounded-tr-sm rounded-bl-sm border px-4 text-sm font-semibold transition'
+          : 'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition',
+        headerBtnClass,
         className,
       ].join(' ')}
     >
-      {isDark ? <SunIcon /> : <MoonIcon />}
+      {showLabel ? (
+        <>
+          <span>{isDark ? 'Light mode' : 'Dark mode'}</span>
+          {isDark ? <SunIcon /> : <MoonIcon />}
+        </>
+      ) : (
+        (isDark ? <SunIcon /> : <MoonIcon />)
+      )}
     </button>
   )
 }

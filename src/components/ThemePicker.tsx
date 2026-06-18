@@ -25,14 +25,74 @@ function CheckIcon() {
   )
 }
 
-export function ThemePicker({ className = '' }: { className?: string }) {
+const headerBtnClass =
+  'border-neutral-300/80 bg-white/90 text-neutral-800 shadow-sm hover:border-neutral-400 hover:bg-white dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15'
+
+type ThemePickerProps = {
+  className?: string
+  /** Inline list for mobile drawer; default is header dropdown. */
+  variant?: 'dropdown' | 'menu'
+  onSelect?: () => void
+}
+
+function SchemeOptions({
+  selectedId,
+  onPick,
+}: {
+  selectedId: string
+  onPick: (id: (typeof COLOR_SCHEMES)[number]['id']) => void
+}) {
+  return (
+    <>
+      {COLOR_SCHEMES.map((scheme) => {
+        const selected = scheme.id === selectedId
+        return (
+          <button
+            key={scheme.id}
+            type="button"
+            role="option"
+            aria-selected={selected}
+            onClick={() => onPick(scheme.id)}
+            className={[
+              'flex w-full items-start gap-3 rounded-xl rounded-tr-sm rounded-bl-sm px-3 py-3 text-left transition',
+              selected
+                ? 'bg-red-50 text-neutral-900 dark:bg-red-500/10 dark:text-white'
+                : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-white/8',
+            ].join(' ')}
+          >
+            <span className="mt-0.5 flex shrink-0 gap-1.5" aria-hidden>
+              {scheme.swatches.map((c) => (
+                <span
+                  key={c}
+                  className="inline-block h-5 w-5 rounded-full ring-2 ring-black/10 dark:ring-white/25"
+                  style={{ backgroundColor: c }}
+                />
+              ))}
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="flex items-center gap-2 font-semibold">
+                {scheme.name}
+                {selected ? <CheckIcon /> : null}
+              </span>
+              <span className="mt-0.5 block text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                {scheme.description}
+              </span>
+            </span>
+          </button>
+        )
+      })}
+    </>
+  )
+}
+
+export function ThemePicker({ className = '', variant = 'dropdown', onSelect }: ThemePickerProps) {
   const { colorScheme, setColorScheme } = useTheme()
   const [open, setOpen] = useState(false)
   const panelId = useId()
   const rootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!open) return
+    if (!open || variant !== 'dropdown') return
     function onPointerDown(e: PointerEvent) {
       if (!rootRef.current?.contains(e.target as Node)) setOpen(false)
     }
@@ -45,12 +105,26 @@ export function ThemePicker({ className = '' }: { className?: string }) {
       window.removeEventListener('pointerdown', onPointerDown)
       window.removeEventListener('keydown', onKey)
     }
-  }, [open])
+  }, [open, variant])
 
   const active = COLOR_SCHEMES.find((s) => s.id === colorScheme)
 
+  function pick(id: (typeof COLOR_SCHEMES)[number]['id']) {
+    setColorScheme(id)
+    setOpen(false)
+    onSelect?.()
+  }
+
+  if (variant === 'menu') {
+    return (
+      <div role="listbox" aria-label="Color themes" className="flex flex-col gap-1">
+        <SchemeOptions selectedId={colorScheme} onPick={pick} />
+      </div>
+    )
+  }
+
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className="relative shrink-0">
       <button
         type="button"
         aria-expanded={open}
@@ -59,19 +133,18 @@ export function ThemePicker({ className = '' }: { className?: string }) {
         title={`Theme: ${active?.name ?? 'Select theme'}`}
         onClick={() => setOpen((o) => !o)}
         className={[
-          'inline-flex h-10 items-center gap-2 rounded-full border border-neutral-300 bg-white px-3 text-neutral-800 transition hover:border-neutral-400 dark:border-neutral-600 dark:bg-zinc-950 dark:text-neutral-200 dark:hover:border-neutral-500',
+          'inline-flex h-10 shrink-0 items-center gap-2 rounded-full border px-3 transition',
+          headerBtnClass,
           className,
         ].join(' ')}
       >
         <PaletteIcon />
-        <span className="hidden max-w-[7rem] truncate text-xs font-semibold sm:inline">
-          {active?.name}
-        </span>
-        <span className="flex gap-0.5" aria-hidden>
+        <span className="max-w-[7rem] truncate text-xs font-semibold">{active?.name}</span>
+        <span className="flex gap-1" aria-hidden>
           {active?.swatches.map((c) => (
             <span
               key={c}
-              className="inline-block h-3 w-3 rounded-full ring-1 ring-black/10 dark:ring-white/20"
+              className="inline-block h-3.5 w-3.5 rounded-full ring-2 ring-black/10 dark:ring-white/25"
               style={{ backgroundColor: c }}
             />
           ))}
@@ -88,46 +161,7 @@ export function ThemePicker({ className = '' }: { className?: string }) {
           <p className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
             Color theme
           </p>
-          {COLOR_SCHEMES.map((scheme) => {
-            const selected = scheme.id === colorScheme
-            return (
-              <button
-                key={scheme.id}
-                type="button"
-                role="option"
-                aria-selected={selected}
-                onClick={() => {
-                  setColorScheme(scheme.id)
-                  setOpen(false)
-                }}
-                className={[
-                  'flex w-full items-start gap-3 rounded-xl rounded-tr-sm rounded-bl-sm px-3 py-3 text-left transition',
-                  selected
-                    ? 'bg-red-50 text-neutral-900 dark:bg-red-500/10 dark:text-white'
-                    : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-white/8',
-                ].join(' ')}
-              >
-                <span className="mt-0.5 flex shrink-0 gap-1" aria-hidden>
-                  {scheme.swatches.map((c) => (
-                    <span
-                      key={c}
-                      className="inline-block h-5 w-5 rounded-full ring-1 ring-black/10 dark:ring-white/15"
-                      style={{ backgroundColor: c }}
-                    />
-                  ))}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="flex items-center gap-2 font-semibold">
-                    {scheme.name}
-                    {selected ? <CheckIcon /> : null}
-                  </span>
-                  <span className="mt-0.5 block text-xs font-medium text-neutral-500 dark:text-neutral-400">
-                    {scheme.description}
-                  </span>
-                </span>
-              </button>
-            )
-          })}
+          <SchemeOptions selectedId={colorScheme} onPick={pick} />
           <p className="border-t border-neutral-200 px-3 py-2.5 text-[11px] leading-snug text-neutral-500 dark:border-white/10 dark:text-neutral-400">
             Use the sun/moon button for light or dark mode within each theme.
           </p>

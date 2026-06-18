@@ -29,7 +29,7 @@ export function FeaturedGlassRow({
     'glass-card relative isolate overflow-hidden rounded-[2.75rem] border border-neutral-300/40 bg-white shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_22px_52px_rgba(0,0,0,0.12)] dark:border-white/10 dark:bg-[#101012] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_64px_rgba(0,0,0,0.6)]'
 
   return (
-    <article className="relative">
+    <article className="relative overflow-hidden">
       <div className={panelClass}>
         {/* soft warm glow behind the plate */}
         <div

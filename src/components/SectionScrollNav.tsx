@@ -74,15 +74,15 @@ export function SectionScrollNav() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/30 bg-white/45 backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-black/35">
-      <nav className="relative mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3.5">
+    <header className="sticky top-0 z-50 overflow-x-clip border-b border-white/30 bg-white/45 backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-black/35">
+      <nav className="relative mx-auto flex min-w-0 max-w-6xl items-center justify-between gap-2 px-4 py-3.5 sm:gap-3">
         <a
           href="#home"
           onClick={(e) => {
             e.preventDefault()
             go('home')
           }}
-          className="text-lg font-bold tracking-tight"
+          className="min-w-0 shrink truncate text-base font-bold tracking-tight sm:text-lg"
         >
           <span className="text-neutral-500 dark:text-neutral-400">The </span>
           <span className="text-red-500">Scarlet</span>
@@ -90,7 +90,7 @@ export function SectionScrollNav() {
         </a>
 
         {/* Desktop nav — glass squircle track */}
-        <div className="hidden flex-1 justify-center lg:flex">
+        <div className="hidden min-w-0 flex-1 justify-center lg:flex">
           <div className="flex items-center gap-0.5 rounded-2xl rounded-tr-md rounded-bl-md border border-neutral-200/50 bg-white/50 px-1.5 py-1.5 dark:border-white/10 dark:bg-white/5">
             {NAV.map(({ id, label }) => (
               <a
@@ -109,12 +109,14 @@ export function SectionScrollNav() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <ThemePicker className="dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15" />
-          <ThemeToggle className="dark:border-white/25 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15" />
+        <div className="flex shrink-0 items-center gap-2">
+          <div className="hidden items-center gap-2 lg:flex">
+            <ThemePicker />
+            <ThemeToggle />
+          </div>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl rounded-tr-sm rounded-bl-sm border border-neutral-300/70 bg-white/50 text-neutral-800 transition hover:bg-white/70 lg:hidden dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl rounded-tr-sm rounded-bl-sm border border-neutral-300/80 bg-white/90 text-neutral-800 shadow-sm transition hover:border-neutral-400 hover:bg-white lg:hidden dark:border-white/20 dark:bg-white/10 dark:text-white dark:hover:border-white/40 dark:hover:bg-white/15"
             aria-expanded={menuOpen}
             aria-controls={menuId}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -146,6 +148,14 @@ export function SectionScrollNav() {
                 {label}
               </a>
             ))}
+
+            <div className="mt-4 space-y-3 border-t border-neutral-200/80 pt-4 dark:border-white/10">
+              <p className="px-1 text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
+                Color theme
+              </p>
+              <ThemePicker variant="menu" onSelect={() => setMenuOpen(false)} />
+              <ThemeToggle showLabel />
+            </div>
           </div>
         </div>
       ) : null}

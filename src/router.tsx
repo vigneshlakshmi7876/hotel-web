@@ -17,7 +17,7 @@ function RouteFallback() {
 
 function AppLayout() {
   return (
-    <div className="relative flex min-h-svh flex-col bg-white dark:bg-black">
+    <div className="relative flex min-h-svh flex-col overflow-x-clip bg-white dark:bg-black">
       <SectionScrollNav />
 
       <main className="relative z-10 flex-1 bg-white dark:bg-black">
